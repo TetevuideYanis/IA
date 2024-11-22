@@ -3,8 +3,10 @@ package algorithmes;
 import java.util.ArrayList;
 
 import operateurs.selection.Selection_aleatoire;
+import operateurs.selection.Selection_roulette_biaisee;
 import operateurs.croisement.Croisement;
 import operateurs.croisement.Croisement_1point;
+import operateurs.croisement.Croisement_2point;
 import operateurs.selection.Selection;
 import problemes.Probleme;
 import representation.Gene;
@@ -56,8 +58,8 @@ public class Algorithme_genetique {
 		for (int generation = 1; generation < nb_generations; generation++) {
 
 	
-			selection = new Selection_aleatoire(population); 
-
+			// selection = new Selection_aleatoire(population); 
+			selection = new Selection_roulette_biaisee(population);
 
 			populationFille = new ArrayList<Solution>();
 
@@ -67,7 +69,8 @@ public class Algorithme_genetique {
 				Solution parent2 = selection.selectionner();
 
 				Croisement croisement; 
-				croisement = new Croisement_1point(parent1, parent2, probaCroisement);
+				//croisement = new Croisement_1point(parent1, parent2, probaCroisement);
+				croisement = new Croisement_2point(parent1, parent2, probaCroisement);
 				croisement.croiser();
 
 				Solution enfant1 = croisement.getEnfant1();
