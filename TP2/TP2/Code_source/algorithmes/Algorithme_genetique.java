@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import operateurs.selection.Selection_aleatoire;
 import operateurs.selection.Selection_roulette_biaisee;
+import operateurs.selection.Selection_tournoi_k;
 import operateurs.croisement.Croisement;
 import operateurs.croisement.Croisement_1point;
 import operateurs.croisement.Croisement_2point;
@@ -59,7 +60,8 @@ public class Algorithme_genetique {
 
 	
 			// selection = new Selection_aleatoire(population); 
-			selection = new Selection_roulette_biaisee(population);
+			//selection = new Selection_roulette_biaisee(population);
+			selection = new Selection_tournoi_k(population, 5);
 
 			populationFille = new ArrayList<Solution>();
 
