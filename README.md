@@ -43,10 +43,20 @@ Ce programme implémente un algorithme génétique pour résoudre des problèmes
 ## Exercice 3 : Implémentation  
 
 1. **Écrivez une classe permettant de réaliser une sélection basée sur une roulette biaisée (vous pouvez vous inspirer de la classe `Selection_aleatoire`).**  
+**Réponse :**
+Voir la Class Java => "Selection_roulette_biaisee" dans le dossier solution.
 
 2. **Modifiez le choix de l’opérateur de sélection dans la classe `Algorithme_genetique` afin de tester votre roulette biaisée.**  
 
 3. **Écrivez une classe permettant de réaliser un croisement 2-points (vous pouvez vous inspirer de la classe `Croisement_1point`).**  
+**Réponse :**
+Voir la Class Java => "Croisement_2point" dans le dossier croisement.
 
 4. **Modifiez le choix de l’opérateur de croisement dans la classe `Algorithme_genetique` afin de tester votre croisement 2-points.**  
+
+Les deux lignes concernant la solution aléatoire et de croisement 1 point à été commenté, par conséquent, les tests effectués ont été réalisé dans le cadre suivant :
+    - Selection_roulette_biaisee avec Croisement_1point
+    - Selection_roulette_biaisee avec Croisement_2point 
+
+Si vous souhaitez faire d'autre tests, n'oubliez pas de décommenter les lignes solution et croisement à votre guise dans le fichier "Algorithme_genetique".
  
