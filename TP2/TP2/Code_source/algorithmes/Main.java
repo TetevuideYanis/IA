@@ -1,6 +1,7 @@
 package algorithmes;
 
 import problemes.ChaineBinaire;
+import problemes.GestionTempsRevision;
 import problemes.Probleme;
 import representation.Solution;
 
@@ -16,7 +17,9 @@ public class Main {
 		
 		int nbBits = 16;
 		Probleme probleme; 
-		probleme = new ChaineBinaire(nbBits); 
+		// probleme = new ChaineBinaire(nbBits); 
+		probleme = new GestionTempsRevision(5, false); 
+
 		
 		Algorithme_genetique algo = new Algorithme_genetique(probleme, taille_population, nb_generations, probaCroisement, probaMutation); 
 		Solution best = algo.executer();
