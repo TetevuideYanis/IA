@@ -14,8 +14,7 @@
 3. **Testez votre méthode en demandant la suppression de toutes les épreuves qui sont en conflit avec l’épreuve de Physique. Affichez la liste des épreuves restantes.**  
    **Réponse :** 
 #################################################
-  Epreuves apres suppression des conflits de   
-           l'epreuve de Physique             
+Epreuves apres suppression des conflits de l'epreuve de Physique             
 #################################################
 Epreuve de Anglais (10:30:00 --> 11:15:00)
 Epreuve de Espagnol (11:15:00 --> 11:30:00)
@@ -27,8 +26,7 @@ Epreuve de Electronique (10:45:00 --> 12:30:00)
 4. **Testez également votre méthode en demandant la suppression de toutes les épreuves qui sont en conflit avec l’épreuve d’Espagnol. Affichez la liste des épreuves restantes.**  
    **Réponse :**
 #################################################
-  Epreuves apres suppression des conflits de   
-           l'epreuve de Espagnol             
+Epreuves apres suppression des conflits de l'epreuve de Espagnol             
 #################################################
 Epreuve de Chinois (11:30:00 --> 11:45:00)
 
@@ -37,7 +35,7 @@ Epreuve de Chinois (11:30:00 --> 11:45:00)
 6. **Dans la classe Main, implémentez un algorithme glouton qui maximise le placement d’épreuves dans la salle.**  
    **Réponse :** Voir classe Main algo glouton
 #################################################
-             Planning des epreuves             
+             Planning des epreuves            
 #################################################
 Epreuve de Physique (08:00:00 --> 10:00:00)
 Epreuve de Anglais (10:30:00 --> 11:15:00)
