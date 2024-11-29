@@ -6,21 +6,53 @@
 ## Exercice 1 : Réservation de salle d’examen  
 
 1. **Comment identifier toutes les épreuves d’une liste qui sont en conflit avec une épreuve donnée ?**  
-   **Réponse :** Les épreuves en conflit avec une épreuve donnée partagent des plages horaires qui se chevauchent avec cette épreuve. On peut les identifier en comparant les horaires de début et de fin.  
+   **Réponse :** Les épreuves en conflit avec une épreuve donnée ont des plages horaires qui se chevauchent. On peut les identifier en comparant les horaires de début de l'épreuve donnée et de fin des épreuves en conflit et enlever celles qui commencent avant.  
 
 2. **Complétez la méthode `eliminerConflits(Epreuve e)` de la classe `ListeEpreuves` qui permet de supprimer toutes les épreuves en conflit avec celle qui est fournie en paramètre.**  
-   **Réponse :** Méthode à implémenter dans la classe `ListeEpreuves`.  
+   **Réponse :** Méthode implémentée dans la classe `ListeEpreuves`.  
 
 3. **Testez votre méthode en demandant la suppression de toutes les épreuves qui sont en conflit avec l’épreuve de Physique. Affichez la liste des épreuves restantes.**  
+   **Réponse :** 
+#################################################
+  Epreuves apres suppression des conflits de   
+           l'epreuve de Physique             
+#################################################
+Epreuve de Anglais (10:30:00 --> 11:15:00)
+Epreuve de Espagnol (11:15:00 --> 11:30:00)
+Epreuve de Philosophie (10:15:00 --> 11:30:00)
+Epreuve de Chinois (11:30:00 --> 11:45:00)
+Epreuve de Chimie (10:15:00 --> 12:15:00)
+Epreuve de Electronique (10:45:00 --> 12:30:00)
 
 4. **Testez également votre méthode en demandant la suppression de toutes les épreuves qui sont en conflit avec l’épreuve d’Espagnol. Affichez la liste des épreuves restantes.**  
+   **Réponse :**
+#################################################
+  Epreuves apres suppression des conflits de   
+           l'epreuve de Espagnol             
+#################################################
+Epreuve de Chinois (11:30:00 --> 11:45:00)
 
 5. **Dans votre classe Main, commentez les lignes qui ont servi aux tests des questions 3 et 4.**  
 
 6. **Dans la classe Main, implémentez un algorithme glouton qui maximise le placement d’épreuves dans la salle.**  
-   **Réponse :** Implémentez un tri basé sur les heures de fin croissantes, puis sélectionnez les épreuves compatibles.  
+   **Réponse :** Voir classe Main algo glouton
+#################################################
+             Planning des epreuves             
+#################################################
+Epreuve de Physique (08:00:00 --> 10:00:00)
+Epreuve de Anglais (10:30:00 --> 11:15:00)
+Epreuve de Espagnol (11:15:00 --> 11:30:00)
+Epreuve de Chinois (11:30:00 --> 11:45:00)
 
 7. **Modifiez votre algorithme en utilisant un autre critère (autre que la priorisation en fonction des horaires de fin les plus proches) pour placer les épreuves. Vous serez probablement amené à modifier la méthode `compareTo` de la classe `Epreuve`. Testez votre nouvelle version.**  
+   **Réponse :** On change le classement par horaire de fin en horaire de début.
+#################################################
+             Planning des epreuves             
+#################################################
+Epreuve de Maths (07:30:00 --> 10:30:00)
+Epreuve de Anglais (10:30:00 --> 11:15:00)
+Epreuve de Espagnol (11:15:00 --> 11:30:00)
+Epreuve de Chinois (11:30:00 --> 11:45:00)
 
 ---
 
@@ -29,10 +61,22 @@
 On souhaite répartir les \(n\) éléments d’un ensemble \(E\) dans deux sous-ensembles \(E_1\) et \(E_2\) de telle sorte que la somme des éléments de \(E_1\) soit égale à la somme des éléments de \(E_2\) (ou s’en rapproche).  
 
 1. **Implémentez les deux algorithmes proposés durant les TD (ou d’autres versions que vous ferez valider par l’enseignant).**  
+   **Réponse :** Voir Méthode 1 et 2
 
 2. **Testez votre algorithme en utilisant tour à tour :**  
    a) \(E = \{2, 10, 3, 8, 5, 7, 9, 5, 3, 2\}\)  
    b) \(E = \{771, 121, 281, 854, 885, 734, 486, 1003, 83, 62\}\)  
+
+   **Réponse :** 
+   Algo 1 : 
+   Liste initiale : 62, 83, 121, 281, 486, 734, 771, 854, 885, 1003 (5280)
+   Sous-liste 1 : 83, 281, 734, 854, 1003 (2955)
+   Sous-liste 2 : 62, 121, 486, 771, 885 (2325)
+
+   Algo 2 :
+   Liste initiale : 62, 83, 121, 281, 486, 734, 771, 854, 885, 1003 (5280)
+   Sous-liste 1 : 62, 83, 121, 281, 486, 734, 771, 854 (3392)
+   Sous-liste 2 : 885, 1003 (1888)
 
 
 **TP 2 : Initiation à l’algorithmique génétique**   

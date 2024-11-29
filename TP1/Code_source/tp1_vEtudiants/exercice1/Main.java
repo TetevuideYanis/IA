@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import tp1_vEtudiants.exercice1.Epreuve;
-import tp1_vEtudiants.exercice1.ListeEpreuves;
-
 public class Main {
 
 	public static void main(String[] args) {
 		
-		String fichierEpreuves = "./Epreuves.txt";
+		String fichierEpreuves = "TP1\\Code_source\\tp1_vEtudiants\\Epreuves.txt";
 		
 		ListeEpreuves listeEpreuves = new ListeEpreuves(fichierEpreuves);
 
@@ -37,7 +34,7 @@ public class Main {
 		
 		System.out.println("#################################################");
 		System.out.println("#  Epreuves apres suppression des conflits de   #");
-		System.out.println("#              l'epreuve de " +  e.getIntitule() + "             #");
+		System.out.println("#           l'epreuve de " +  e.getIntitule() + "             #");
 		System.out.println("#################################################");
 		
 		
@@ -45,11 +42,10 @@ public class Main {
 		System.out.println();
 		*/
 		
-				
+		 		
 		ArrayList<Epreuve> planning = new ArrayList<Epreuve>();
 		
-		// Implementez votre algorithme de planification efficace des epreuves. 
-		// Les epreuves retenues seront ajoutees, au fur et a mesure dans "planning"
+		//Algo glouton
 		while (listeEpreuves.getListe().size() != 0){
 			Epreuve epreuve = listeEpreuves.get(0);
 			planning.add(epreuve);

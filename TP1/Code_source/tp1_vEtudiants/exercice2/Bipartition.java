@@ -29,8 +29,7 @@ public class Bipartition {
 		Collections.sort((List<Integer>) liste);
 		afficher(liste);
 
-		//methode1(liste);
-		utiliserMotieSommeCommeRepere(liste);
+		completerSousEnsembleLePulsPetit(liste);
 
 		System.out.print("Sous-liste 1 : ");
 		afficher(sListe1);
