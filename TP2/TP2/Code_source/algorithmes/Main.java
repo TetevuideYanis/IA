@@ -17,8 +17,8 @@ public class Main {
 		
 		int nbBits = 16;
 		Probleme probleme; 
-		// probleme = new ChaineBinaire(nbBits); 
-		probleme = new GestionTempsRevision(5, false); 
+		probleme = new ChaineBinaire(nbBits); 
+		//probleme = new GestionTempsRevision(5, false); 
 
 		
 		Algorithme_genetique algo = new Algorithme_genetique(probleme, taille_population, nb_generations, probaCroisement, probaMutation); 

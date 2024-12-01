@@ -60,8 +60,8 @@ public class Algorithme_genetique {
 
 	
 			// selection = new Selection_aleatoire(population); 
-			//selection = new Selection_roulette_biaisee(population);
-			selection = new Selection_tournoi_k(population, 5);
+			selection = new Selection_roulette_biaisee(population);
+			//selection = new Selection_tournoi_k(population, 5);
 
 			populationFille = new ArrayList<Solution>();
 
