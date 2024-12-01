@@ -1,3 +1,9 @@
+<style>
+p {
+  text-align: justify;
+}
+</style>
+
 # Introduction à l’intelligence artificielle  
 ## Partie I : Optimisation bio-inspirée  
 
@@ -9,18 +15,18 @@
    **Réponse :** Les épreuves en conflit avec une épreuve donnée ont des plages horaires qui se chevauchent. On peut les identifier en comparant les horaires de début de l'épreuve donnée et de fin des épreuves en conflit et enlever celles qui commencent avant.  
 
 2. **Complétez la méthode `eliminerConflits(Epreuve e)` de la classe `ListeEpreuves` qui permet de supprimer toutes les épreuves en conflit avec celle qui est fournie en paramètre.**  
-   **Réponse :** \
+   **Réponse :**
+   ```java
    public void eliminerConflits(Epreuve e) {
-
-   		for(int i = 0; i < liste.size(); i++){
-			if(liste.get(i).getDebut().before(e.getFin())){
-				this.liste.remove(i);
-				i--;
-			}
+	for(int i = 0; i < liste.size(); i++){
+		if(liste.get(i).getDebut().before(e.getFin())){
+			this.liste.remove(i);
+			i--;
 		}
-   }
-
-   On parcours la liste des épreuves, si une épreuve commence avant la fin de l'épreuve donnée, alors on l'enlêve. Puisqu'on a retiré une épreuve, on décrémente de 1.
+	}
+   }	
+   ```
+On parcours la liste des épreuves, si une épreuve commence avant la fin de l'épreuve donnée, alors on l'enlêve. Puisqu'on a retiré une épreuve, on décrémente de 1.
 
 4. **Testez votre méthode en demandant la suppression de toutes les épreuves qui sont en conflit avec l’épreuve de Physique. Affichez la liste des épreuves restantes.**  
    **Réponse :**
@@ -50,14 +56,14 @@ Cette fois il ne reste que le chinois qui commence après 11:30.
 6. **Dans la classe Main, implémentez un algorithme glouton qui maximise le placement d’épreuves dans la salle.**  
    **Réponse :** Pour maximiser le nombre d'épreuve, on prend celle qui fini le plus tôt à chaque fois et on élimine les conflits. 
 
+   ```java
    while (listeEpreuves.getListe().size() != 0){
-   
-			Epreuve epreuve = listeEpreuves.get(0); 
-			planning.add(epreuve); 
-			listeEpreuves.eliminerConflits(epreuve); 
-		} 
-   
-   On parcours la liste des épreuves triées par date de fin croissante, on prends la première et on élimine celle qui sont en conflits avec elle. Ensuite, on prend la suivante qui fini le plus tôt et on recommence. Il s'agit d'un algo glouton car à chaque étape, on choisi la meilleure option visible, ici l'épreuve qui fini le plus tôt.
+	Epreuve epreuve = listeEpreuves.get(0); 
+	planning.add(epreuve); 
+	listeEpreuves.eliminerConflits(epreuve); 
+   }
+   ```
+On parcours la liste des épreuves triées par date de fin croissante, on prends la première et on élimine celle qui sont en conflits avec elle. Ensuite, on prend la suivante qui fini le plus tôt et on recommence. Il s'agit d'un algo glouton car à chaque étape, on choisi la meilleure option visible, ici l'épreuve qui fini le plus tôt.
 
 ################################################# \
              Planning des epreuves  \
@@ -72,16 +78,16 @@ On obtient un planning ou aucune épreuve n'est en conflit avec une autre et qui
 7. **Modifiez votre algorithme en utilisant un autre critère (autre que la priorisation en fonction des horaires de fin les plus proches) pour placer les épreuves. Vous serez probablement amené à modifier la méthode `compareTo` de la classe `Epreuve`. Testez votre nouvelle version.**  
    **Réponse :** On peut faire l'inverse et changer le classement par horaire de fin en horaire de début. 
 
-public int compareTo(Object o) {
-
+   ```java
+   public int compareTo(Object o) {
         Epreuve e = (Epreuve) o;
         
     	if (this.debut.before(e.debut))
     		return -1; 
     	else 
     		return 0;
-        }
-
+   }
+   ```
 ################################################# \
              Planning des epreuves  \
 ################################################# \
@@ -93,33 +99,32 @@ Epreuve de Chinois (11:30:00 --> 11:45:00)
 
 Le résultat semble similaire mais cette fois on commence par Math qui débute plus tôt car le tri à changé.
 ---
-
 ## Exercice 2 : Bipartition  
 
 On souhaite répartir les \(n\) éléments d’un ensemble \(E\) dans deux sous-ensembles \(E_1\) et \(E_2\) de telle sorte que la somme des éléments de \(E_1\) soit égale à la somme des éléments de \(E_2\) (ou s’en rapproche).  
 
 1. **Implémentez les deux algorithmes proposés durant les TD (ou d’autres versions que vous ferez valider par l’enseignant).**  
-   **Réponse :** 
-
+   **Réponse :**
+   
+   ```java
    public static void completerSousEnsembleLePulsPetit(ArrayList<Integer> liste) {
-   
-		for(int i = 0; i < liste.size(); i++){
-			int sommeL1 = somme(sListe1);
-			int sommeL2 = somme(sListe2);
-			if(sommeL1 < sommeL2){
-				sListe1.add(liste.get(i));
-			}
-			else{
-				sListe2.add(liste.get(i));
-			}
+	for(int i = 0; i < liste.size(); i++){
+		int sommeL1 = somme(sListe1);
+		int sommeL2 = somme(sListe2);
+		if(sommeL1 < sommeL2){
+			sListe1.add(liste.get(i));
 		}
-}
-
-   La première méthode consiste à comparer la somme des valeurs des deux sous ensemble et d'ajouter l'élément au sous ensemble dont la somme est la plus petite. Cet algo est glouton car à chaque itération, on fait le choix le plus appriorier pour garder la somme des sous ensembles équivalente.
-
-   public static void utiliserMotieSommeCommeRepere(ArrayList<Integer> liste) { 
+		else{
+			sListe2.add(liste.get(i));
+		}
+	}
+   } 
+   ```
+La première méthode consiste à comparer la somme des valeurs des deux sous ensemble et d'ajouter l'élément au sous ensemble dont la somme est la plus petite. Cet algo est glouton car à chaque itération, on fait le choix le plus appriorier pour garder la somme des sous ensembles équivalente.
    
-		int moitieSomme = somme(liste) / 2;
+   ```java
+   public static void utiliserMotieSommeCommeRepere(ArrayList<Integer> liste){ 
+	 int moitieSomme = somme(liste) / 2;
 		for (int i = 0; i < liste.size(); i++) {
 			if(somme(sListe1) < moitieSomme){
 				sListe1.add(liste.get(i));
@@ -128,9 +133,10 @@ On souhaite répartir les \(n\) éléments d’un ensemble \(E\) dans deux sous-
 				sListe2.add(liste.get(i));
 			}
 		}
-	}
+   }
+   ```
 
-   La deuxième méthode consiste à faire la division de la somme des valeurs des éléments de la liste par 2. Ensuite on rempli le 1er sous ensemble jusqu'a dépasser cette somme/2. Tout le reste va dans le 2eme sous ensemble. Cet algo est glouton car une fois encore on prends la meilleure décision à l'instant T et on ne revient pas en arrière.
+La deuxième méthode consiste à faire la division de la somme des valeurs des éléments de la liste par 2. Ensuite on rempli le 1er sous ensemble jusqu'a dépasser cette somme/2. Tout le reste va dans le 2eme sous ensemble. Cet algo est glouton car une fois encore on prends la meilleure décision à l'instant T et on ne revient pas en arrière.
 
 3. **Testez votre algorithme en utilisant tour à tour :**  
    a) \(E = \{2, 10, 3, 8, 5, 7, 9, 5, 3, 2\}\)  
@@ -149,7 +155,7 @@ On souhaite répartir les \(n\) éléments d’un ensemble \(E\) dans deux sous-
    Sous-liste 1 : 62, 83, 121, 281, 486, 734, 771, 854 (3392) \
    Sous-liste 2 : 885, 1003 (1888) 
 
-   Ici on a une grande différence de somme car les listes triées contenait des valeurs à une échelles différentes. Ainsi, lorsqu'on à dépassé le seuil, les grandes valeurs ont fini dans le deuxième sous ensemble, ce qui cause l'écart. Il faut donc faire attention aux types de listes que nous utilisons pour ces algo.
+Ici on a une grande différence de somme car les listes triées contenait des valeurs à une échelles différentes. Ainsi, lorsqu'on à dépassé le seuil, les grandes valeurs ont fini dans le deuxième sous ensemble, ce qui cause l'écart. Il faut donc faire attention aux types de listes que nous utilisons pour ces algo.
 
 
 **TP 2 : Initiation à l’algorithmique génétique**   
@@ -195,7 +201,9 @@ Ce programme implémente un algorithme génétique pour résoudre des problèmes
 
 1. **Écrivez une classe permettant de réaliser une sélection basée sur une roulette biaisée (vous pouvez vous inspirer de la classe `Selection_aleatoire`).**  
 **Réponse :**
-public Solution selectionner() {
+
+   ```java
+   public Solution selectionner() {
         
         double sommeScores = 0;
         for (Solution s : population) {
@@ -213,7 +221,7 @@ public Solution selectionner() {
         }
         
         return population.get(population.size() - 1);
-    }
+   }
 
 On commence par calculer la somme des valeurs de fitness 'sommeScores'. On tire un nombre aléatoire, multiplié par sommeScores pour rester dans la même échelle, qui sera notre seuil de sélection. Le premier élément dont la valeur de fitness ajoutée dépassera ce seuil sera sélectionné. S'il y a un problème, on retourne le dernier élément.
 
@@ -224,8 +232,8 @@ La sélection a l'air de bien fonctionner.
 
 3. **Écrivez une classe permettant de réaliser un croisement 2-points (vous pouvez vous inspirer de la classe `Croisement_1point`).**  
 **Réponse :**
-
-public void croiser() {
+   ```java
+   public void croiser() {
 
         int nb_variables_decision = parent1.getNb_variables_decision();
 
@@ -263,7 +271,7 @@ public void croiser() {
                 enfant2.setVariable(i, parent2.getDoubleVariable(i));
             }
         }
-    }
+   }
 
 Deux positions aléatoires sont choisies pour diviser les chromosomes des parents en trois segments. Les variables avant le premier point sont copiées directement des parents aux enfants. Les variables entre les deux points sont échangées entre les parents pour créer de la diversité. Enfin, les variables après le second point sont de nouveau copiées directement des parents respectifs. Cela génère deux nouvelles solutions en combinant les caractéristiques des deux parents.
 
@@ -279,7 +287,7 @@ L'algo fonctionne.
 
 **Implémentez et testez les opérateurs suivants :**
 1. **une séldction basée sur un tournoi de taille k.**
-
+```java
 public Solution selectionner() {
 
         ArrayList<Solution> participants = new ArrayList<Solution>(taille);
@@ -298,11 +306,11 @@ public Solution selectionner() {
 
         return s;
     }
-
+```
 Un sous-ensemble aléatoire de solutions est extrait de la population, avec une taille prédéfinie. Parmi ces solutions, celle qui possède la meilleure valeur de fitness est sélectionnée et retournée comme résultat. Cette méthode favorise les solutions de meilleure qualité tout en introduisant une part d'aléatoire pour maintenir la diversité.
 
 2. **Un croisement k-points (vous pouvez vous inspirer de votre code de croisement 2-points) ?**
-
+```java
 public void croiser() {
 
         int nb_variables_decision = parent1.getNb_variables_decision();
@@ -341,5 +349,5 @@ public void croiser() {
             }
         }
     }
-
+```
 Un certain nombre de points de croisement aléatoires sont déterminés (spécifié par la variable kPoints). Ces points divisent le chromosome en segments alternés entre les deux parents. Les variables des enfants sont copiées alternativement de l'un ou l'autre parent en changeant de source à chaque point de croisement. Cela crée deux nouveaux chromosomes en combinant les gènes des deux parents de manière structurée mais diversifiée.
